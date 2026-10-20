@@ -1,0 +1,372 @@
+/* ==========================================================================
+   HV VERTEX ELECTRONICS — Unified Animated Dropdown Design System
+   Tokens:
+     Background:        #0b1120
+     Dropdown Surface:  #111827
+     Menu Surface:      #151f30
+     Accent Primary:    #10b981
+     Accent Hover:      #34d399
+     Text Primary:      #f8fafc
+     Text Secondary:    #94a3b8
+     Text Muted:        #64748b
+     Border:            rgba(148, 163, 184, 0.16)
+     Focus Ring:        rgba(16, 185, 129, 0.4)
+     Error State:       #f87171
+   ========================================================================== */
+
+/* Main Dropdown Container */
+.hv-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  color: #f8fafc;
+  vertical-align: middle;
+}
+
+.hv-dropdown.is-open {
+  z-index: 1000;
+}
+
+.hv-dropdown.full-width {
+  display: block;
+  width: 100%;
+}
+
+/* Trigger Button */
+.hv-dropdown-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 36px;
+  padding: 0 12px;
+  background-color: #111827;
+  color: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.hv-dropdown-trigger:hover:not(:disabled) {
+  background-color: #131c2d;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.hv-dropdown-trigger:focus-visible,
+.hv-dropdown.is-open .hv-dropdown-trigger {
+  outline: none;
+  border-color: #10b981;
+  box-shadow:
+    0 0 0 2px rgba(16, 185, 129, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Size Variants */
+.hv-dropdown.size-sm .hv-dropdown-trigger {
+  min-height: 30px;
+  padding: 0 9px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.hv-dropdown.size-lg .hv-dropdown-trigger {
+  min-height: 42px;
+  padding: 0 14px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* Disabled State */
+.hv-dropdown.is-disabled .hv-dropdown-trigger,
+.hv-dropdown-trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-color: rgba(148, 163, 184, 0.1);
+  background-color: #0b1120;
+}
+
+/* Error State */
+.hv-dropdown.has-error .hv-dropdown-trigger {
+  border-color: #f87171;
+  box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.2);
+}
+
+/* Content Area inside Trigger */
+.hv-dropdown-trigger-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.hv-dropdown-trigger-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.hv-dropdown-trigger-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.hv-dropdown-value-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #f8fafc;
+}
+
+.hv-dropdown-placeholder {
+  color: #64748b;
+}
+
+/* Rotating Chevron */
+.hv-dropdown-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  margin-left: 4px;
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+}
+
+.hv-dropdown-trigger:hover:not(:disabled) .hv-dropdown-chevron {
+  color: #f8fafc;
+}
+
+.hv-dropdown.is-open .hv-dropdown-chevron {
+  color: #10b981;
+}
+
+.hv-dropdown-chevron svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Elevated Menu Surface (Listbox)
+   -------------------------------------------------------------------------- */
+.hv-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 9999;
+  min-width: 100%;
+  max-height: 280px;
+  margin: 0;
+  padding: 5px;
+  background-color: #151f30;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 9px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4),
+    0 16px 24px -4px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  transform-origin: top center;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+.hv-dropdown-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.hv-dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.3);
+  border-radius: 999px;
+}
+
+/* Alignment Variants */
+.hv-dropdown.align-right .hv-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Menu Items (Option Rows)
+   -------------------------------------------------------------------------- */
+.hv-dropdown-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 450;
+  color: #f8fafc;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition:
+    background-color 0.14s ease,
+    color 0.14s ease,
+    transform 0.1s ease;
+}
+
+/* Hover & Keyboard Active Highlight */
+.hv-dropdown-item.is-active,
+.hv-dropdown-item:hover:not(.is-disabled) {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+/* Selected State */
+.hv-dropdown-item.is-selected {
+  background-color: rgba(16, 185, 129, 0.18);
+  color: #10b981;
+  font-weight: 600;
+}
+
+.hv-dropdown-item.is-selected.is-active {
+  background-color: rgba(16, 185, 129, 0.24);
+  color: #34d399;
+}
+
+/* Disabled Option */
+.hv-dropdown-item.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Option Content */
+.hv-dropdown-item-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  pointer-events: none;
+}
+
+.hv-dropdown-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: currentColor;
+  pointer-events: none;
+}
+
+.hv-dropdown-item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hv-dropdown-item-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin-left: 6px;
+  font-weight: 400;
+  pointer-events: none;
+}
+
+/* Selected Checkmark */
+.hv-dropdown-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-left: 6px;
+  pointer-events: none;
+}
+
+.hv-dropdown-check svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.5;
+}
+
+/* Empty State inside Menu */
+.hv-dropdown-empty {
+  padding: 12px 10px;
+  font-size: 12.5px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Container & Stacking Context Elevation
+   -------------------------------------------------------------------------- */
+.ops-table-row:has(.hv-dropdown.is-open),
+.role-module-table .ops-table-row:has(.hv-dropdown.is-open),
+.people-table .ops-table-row:has(.hv-dropdown.is-open),
+.workspace-setting-row:has(.hv-dropdown.is-open) {
+  z-index: 1000 !important;
+  position: relative !important;
+}
+
+.ops-table:has(.hv-dropdown.is-open) {
+  overflow-y: visible !important;
+}
+
+.group-create-form .hv-dropdown {
+  width: 160px;
+  min-width: 135px;
+}
+
+.role-module-owner .hv-dropdown {
+  width: 100%;
+  max-width: 155px;
+  min-width: 125px;
+}
+
+.people-table .ops-table-row .hv-dropdown {
+  width: 100%;
+  min-width: 130px;
+}
+
+.workspace-setting-row .hv-dropdown {
+  min-width: 135px;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility: Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hv-dropdown-menu,
+  .hv-dropdown-chevron,
+  .hv-dropdown-trigger,
+  .hv-dropdown-item {
+    animation: none !important;
+    transition: none !important;
+  }
+}

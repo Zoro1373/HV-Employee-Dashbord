@@ -1,0 +1,1008 @@
+/* ==========================================================================
+   HV VERTEX ELECTRONICS — Official Login Page Styles
+   Theme: Aerospace / Industrial Engineering · Dark Navy & Emerald Accent
+   ========================================================================== */
+
+:root {
+  --hv-login-bg: #0b1120;
+  --hv-login-card: rgba(15, 23, 42, 0.90);
+  --hv-login-accent: #10b981;
+  --hv-login-accent-hover: #34d399;
+  --hv-login-accent-subtle: rgba(16, 185, 129, 0.12);
+  --hv-login-accent-border: rgba(16, 185, 129, 0.35);
+  --hv-login-text-primary: #f8fafc;
+  --hv-login-text-secondary: #94a3b8;
+  --hv-login-text-muted: #64748b;
+  --hv-login-border: rgba(148, 163, 184, 0.16);
+  --hv-login-border-focus: #10b981;
+  --hv-login-input-bg: #111827;
+  --hv-login-error: #f87171;
+  --hv-login-error-bg: rgba(248, 113, 113, 0.12);
+  --hv-login-error-border: rgba(248, 113, 113, 0.3);
+  --hv-login-font: 'Manrope', system-ui, -apple-system, sans-serif;
+  --hv-login-mono: 'JetBrains Mono', monospace;
+}
+
+/* 1. Full-viewport Stage */
+.hv-login-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  background-color: var(--hv-login-bg);
+  color: var(--hv-login-text-primary);
+  font-family: var(--hv-login-font);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Technical Blueprint Grid Pattern */
+.hv-login-background-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center center;
+  opacity: 0.85;
+}
+
+/* Subtle Emerald Radial Glows & Ambient Spots (adapted from sign-in-card-2) */
+.hv-login-radial-glow {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.hv-login-radial-glow.top {
+  top: 0;
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+}
+
+.hv-login-radial-glow.bottom {
+  bottom: 0;
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 68%);
+}
+
+.hv-ambient-glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(95px);
+}
+
+.hv-ambient-glow-spot.top-left {
+  top: 15%;
+  left: 10%;
+  width: 340px;
+  height: 340px;
+  background: rgba(16, 185, 129, 0.05);
+  animation: hvPulse 6s infinite ease-in-out;
+}
+
+.hv-ambient-glow-spot.bottom-right {
+  bottom: 15%;
+  right: 10%;
+  width: 360px;
+  height: 360px;
+  background: rgba(52, 211, 153, 0.04);
+  animation: hvPulse 7s infinite ease-in-out 1s;
+}
+
+/* Screen Perimeter Vignette */
+.hv-login-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(6, 11, 22, 0.75) 100%);
+}
+
+/* 2. Main Login Container & Card */
+.hv-login-card-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.hv-card-tilt-inner {
+  position: relative;
+  border-radius: 18px;
+}
+
+/* Card Ambient Breathing Glow Effect (from sign-in-card-2) */
+.hv-card-glow-pulse {
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Perimeter Traveling Light Beams (Laser Circuit Trace from sign-in-card-2) */
+.hv-perimeter-beams-container {
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hv-beam-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, #34d399, transparent);
+  opacity: 0.85;
+}
+
+.hv-beam-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5px;
+  height: 50%;
+  background: linear-gradient(180deg, transparent, #34d399, transparent);
+  opacity: 0.85;
+}
+
+.hv-beam-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 2.5px;
+  width: 50%;
+  background: linear-gradient(270deg, transparent, #34d399, transparent);
+  opacity: 0.85;
+}
+
+.hv-beam-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5px;
+  height: 50%;
+  background: linear-gradient(0deg, transparent, #34d399, transparent);
+  opacity: 0.85;
+}
+
+/* Corner Glow Pulsing Dots (from sign-in-card-2) */
+.hv-corner-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: #34d399;
+}
+
+.hv-corner-glow.top-left {
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  filter: blur(1px);
+}
+
+.hv-corner-glow.top-right {
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  filter: blur(2px);
+}
+
+.hv-corner-glow.bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  filter: blur(2px);
+}
+
+.hv-corner-glow.bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  filter: blur(1px);
+}
+
+.hv-login-card {
+  position: relative;
+  z-index: 2;
+  background: var(--hv-login-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--hv-login-border);
+  border-radius: 18px;
+  padding: 30px 28px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 20px 25px -5px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hv-login-card:hover {
+  border-color: rgba(148, 163, 184, 0.28);
+  box-shadow:
+    0 8px 16px -2px rgba(0, 0, 0, 0.35),
+    0 24px 32px -6px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(16, 185, 129, 0.08);
+}
+
+@keyframes hvLoginFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 3. Header & Brand Section */
+.hv-login-header {
+  margin-bottom: 22px;
+}
+
+.hv-login-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.hv-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hv-brand-mark {
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hv-brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.hv-brand-name {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--hv-login-text-primary);
+}
+
+.hv-brand-sub {
+  font-family: var(--hv-login-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--hv-login-accent);
+}
+
+/* Security Badge */
+.hv-security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--hv-login-accent-subtle);
+  border: 1px solid var(--hv-login-accent-border);
+  font-family: var(--hv-login-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--hv-login-accent-hover);
+  user-select: none;
+}
+
+.hv-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--hv-login-accent);
+  box-shadow: 0 0 6px var(--hv-login-accent);
+  animation: hvPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes hvPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.hv-login-welcome {
+  margin-top: 8px;
+}
+
+.hv-eyebrow {
+  font-family: var(--hv-login-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--hv-login-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.hv-welcome-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--hv-login-text-primary);
+}
+
+.hv-welcome-desc {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: var(--hv-login-text-secondary);
+  line-height: 1.45;
+}
+
+/* 4. Alert Banner */
+.hv-login-alert-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--hv-login-error-bg);
+  border: 1px solid var(--hv-login-error-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  color: var(--hv-login-error);
+  font-size: 12.5px;
+  line-height: 1.4;
+  animation: hvAlertFadeIn 0.2s ease-out;
+}
+
+@keyframes hvAlertFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hv-login-alert-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hv-login-alert-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hv-login-alert-title {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.hv-login-alert-text {
+  margin: 0;
+  color: #fecaca;
+}
+
+/* 5. Form & Fields */
+.hv-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hv-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hv-form-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--hv-login-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.hv-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--hv-login-input-bg);
+  border: 1px solid var(--hv-login-border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.hv-input-wrapper:hover {
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.hv-input-wrapper:focus-within {
+  border-color: var(--hv-login-border-focus);
+  box-shadow:
+    0 0 0 1px var(--hv-login-border-focus),
+    0 0 14px rgba(16, 185, 129, 0.22);
+}
+
+.hv-input-wrapper.has-error {
+  border-color: var(--hv-login-error);
+}
+
+.hv-input-wrapper.has-error:focus-within {
+  border-color: var(--hv-login-error);
+  box-shadow:
+    0 0 0 1px var(--hv-login-error),
+    0 0 12px rgba(248, 113, 113, 0.2);
+}
+
+.hv-input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--hv-login-text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hv-input-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.hv-form-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 40px 0 38px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--hv-login-text-primary);
+  font-family: inherit;
+  font-size: 13.5px;
+  box-sizing: border-box;
+}
+
+.hv-form-input::placeholder {
+  color: var(--hv-login-text-muted);
+  opacity: 0.75;
+}
+
+.hv-form-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Password Visibility Toggle */
+.hv-password-toggle-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 0;
+  color: var(--hv-login-text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.hv-password-toggle-btn:hover {
+  color: var(--hv-login-text-primary);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.hv-password-toggle-btn:focus-visible {
+  outline: 2px solid var(--hv-login-accent);
+  outline-offset: 1px;
+}
+
+.hv-password-toggle-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hv-field-error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 3px 0 0 2px;
+  font-size: 11.5px;
+  color: var(--hv-login-error);
+  line-height: 1.3;
+}
+
+.hv-field-error svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* 6. Form Options (Remember Me / Forgot Password) */
+.hv-form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.hv-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hv-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hv-checkbox-custom {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: var(--hv-login-input-bg);
+  border: 1px solid var(--hv-login-border);
+  border-radius: 4px;
+  transition: all 0.18s ease;
+}
+
+.hv-checkbox:checked + .hv-checkbox-custom {
+  background: var(--hv-login-accent);
+  border-color: var(--hv-login-accent);
+}
+
+.hv-checkbox:checked + .hv-checkbox-custom::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #041b12;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.hv-checkbox:focus-visible + .hv-checkbox-custom {
+  outline: 2px solid var(--hv-login-accent);
+  outline-offset: 2px;
+}
+
+.hv-checkbox-text {
+  font-size: 12.5px;
+  color: var(--hv-login-text-secondary);
+  font-weight: 500;
+}
+
+.hv-forgot-btn {
+  background: none;
+  border: 0;
+  padding: 4px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--hv-login-accent);
+  cursor: pointer;
+  transition: color 0.18s ease;
+  border-radius: 4px;
+}
+
+.hv-forgot-btn:hover {
+  color: var(--hv-login-accent-hover);
+  text-decoration: underline;
+}
+
+.hv-forgot-btn:focus-visible {
+  outline: 2px solid var(--hv-login-accent);
+  outline-offset: 2px;
+}
+
+/* 7. Primary Sign In Button */
+.hv-submit-btn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  margin-top: 6px;
+  padding: 0 18px;
+  background-color: var(--hv-login-accent);
+  color: #041b12;
+  border: 0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+.hv-btn-shimmer-sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hv-btn-content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hv-submit-btn:hover:not(:disabled) {
+  background-color: var(--hv-login-accent-hover);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+.hv-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.hv-submit-btn:focus-visible {
+  outline: 2px solid var(--hv-login-accent-hover);
+  outline-offset: 2px;
+}
+
+.hv-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.hv-btn-arrow {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.2;
+  transition: transform 0.2s ease;
+}
+
+.hv-submit-btn:hover:not(:disabled) .hv-btn-arrow {
+  transform: translateX(3px);
+}
+
+.hv-btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(4, 27, 18, 0.3);
+  border-top-color: #041b12;
+  border-radius: 50%;
+  animation: hvSpinner 0.7s linear infinite;
+}
+
+@keyframes hvSpinner {
+  to { transform: rotate(360deg); }
+}
+
+/* 8. Card Bottom & Links */
+.hv-login-card-footer {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hv-login-border);
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--hv-login-text-muted);
+}
+
+.hv-footer-action-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--hv-login-accent);
+  cursor: pointer;
+  transition: color 0.18s ease;
+  border-radius: 4px;
+}
+
+.hv-footer-action-btn:hover {
+  color: var(--hv-login-accent-hover);
+  text-decoration: underline;
+}
+
+.hv-footer-action-btn:focus-visible {
+  outline: 2px solid var(--hv-login-accent);
+  outline-offset: 2px;
+}
+
+/* 9. Page Footer */
+.hv-login-page-footer {
+  position: relative;
+  z-index: 10;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--hv-login-text-muted);
+  text-align: center;
+}
+
+.hv-footer-security {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--hv-login-mono);
+  font-size: 11px;
+  color: #718096;
+}
+
+.hv-security-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--hv-login-accent);
+  box-shadow: 0 0 4px var(--hv-login-accent);
+}
+
+/* 10. Enterprise Modal Dialogs (Forgot Password / Need Access) */
+.hv-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: hvModalFade 0.2s ease-out;
+}
+
+@keyframes hvModalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hv-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: #0f172a;
+  border: 1px solid var(--hv-login-border);
+  border-radius: 16px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  animation: hvModalZoom 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes hvModalZoom {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hv-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.hv-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hv-modal-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--hv-login-accent-subtle);
+  border: 1px solid var(--hv-login-accent-border);
+  color: var(--hv-login-accent);
+}
+
+.hv-modal-icon-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hv-modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--hv-login-text-primary);
+}
+
+.hv-modal-close-btn {
+  background: none;
+  border: 0;
+  padding: 6px;
+  color: var(--hv-login-text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.hv-modal-close-btn:hover {
+  color: var(--hv-login-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hv-modal-close-btn:focus-visible {
+  outline: 2px solid var(--hv-login-accent);
+}
+
+.hv-modal-body {
+  font-size: 13.5px;
+  color: var(--hv-login-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.hv-modal-body p {
+  margin: 0 0 10px;
+}
+
+.hv-modal-list {
+  margin: 10px 0 12px 18px;
+  padding: 0;
+}
+
+.hv-modal-list li {
+  margin-bottom: 6px;
+  color: var(--hv-login-text-primary);
+}
+
+.hv-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.hv-modal-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.hv-modal-btn.primary {
+  background: var(--hv-login-accent);
+  color: #041b12;
+  border: 0;
+}
+
+.hv-modal-btn.primary:hover {
+  background: var(--hv-login-accent-hover);
+}
+
+/* 10. Desktop Widescreen Layout (Cinematic Asymmetry) */
+@media (min-width: 1200px) {
+  .hv-login-page {
+    align-items: flex-start;
+    padding-left: clamp(48px, 10vw, 160px);
+  }
+
+  .hv-login-card-container {
+    margin: 0;
+  }
+
+  .hv-login-page-footer {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+    max-width: 420px;
+  }
+}
+
+/* 11. Mobile and Responsive Adaptations */
+@media (max-width: 480px) {
+  .hv-login-page {
+    padding: 16px 12px;
+    justify-content: flex-start;
+  }
+
+  .hv-login-card {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .hv-login-brand-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .hv-welcome-title {
+    font-size: 20px;
+  }
+
+  .hv-welcome-desc {
+    font-size: 13px;
+  }
+
+  .hv-form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* 12. Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .hv-login-card,
+  .hv-modal-backdrop,
+  .hv-modal-box,
+  .hv-login-alert-banner {
+    animation: none !important;
+  }
+
+  .hv-pulse-dot {
+    animation: none !important;
+  }
+
+  .hv-submit-btn,
+  .hv-btn-arrow,
+  .hv-form-input,
+  .hv-password-toggle-btn {
+    transition: none !important;
+  }
+}
